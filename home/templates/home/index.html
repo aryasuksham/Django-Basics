@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block start %}
+    <h1>
+        This is Home Page
+    </h1>
+    <a href="/about/">
+    About
+    </a>
+    |
+    <a href="/contact/">
+    Contact
+    </a>
+    <p>
+        This is not a mobile application. We are just practicing web application building here.
+    </p>
+    <p>
+        {{people}}
+    </p>
+    <table style="width:100%">
+        <tr>
+          <th>S.No.</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Can Vote</th>
+        </tr>
+        {% for person in people %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{person.name}}</td>
+          <td>{{person.age}}</td>
+          <td>
+            {% if person.age >= 18 %}
+            Yes👍
+            {% else %}
+            No👎
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <p>
+        {{text|truncatechars:90}}
+      </p>
+
+      <p>
+        {% if 'tomato' in vegetables %}
+        Yes Available
+        {% elif 'cucumber' in vegetables %}
+        {% else %}
+        Not Available
+        {% endif %}
+      </p>
+
+      <p>
+        <!-- Not working properly -->
+        {% firstof vegetables %}
+      </p>
+{% endblock %}
