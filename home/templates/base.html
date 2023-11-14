@@ -18,6 +18,19 @@
 </head>
 <body>
 
+    <nav class="navbar dark p-3 bg-secondary shadow-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand">Navbar</a>
+          <form class="d-flex" role="search">
+            {% if request.user.is_authenticated %}
+               <a href="/logout/" class="btn btn-primary" type="submit">Logout</a>
+            {% else %}
+               <a href="/login" class="btn btn-primary" type="submit">Login</a>
+            {% endif %}
+            </form>
+        </div>
+      </nav>
+
     {% block start %}
 
     {% endblock %}
