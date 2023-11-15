@@ -98,7 +98,6 @@ def logout_page(request):
 
 
 def register_page(request):
-
 #    redirect_count = int(request.GET.get('redirect_count', 0))
 
    if request.method == 'POST':
@@ -125,4 +124,5 @@ def register_page(request):
         user.save()
 
         messages.info(request, 'Account created successfully')
+
    return render(request, 'register.html')
