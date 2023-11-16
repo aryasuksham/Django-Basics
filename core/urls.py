@@ -38,6 +38,11 @@ urlpatterns = [
     path('logout/', logout_page, name = 'logout_page'), 
     path('register/', register_page, name = 'register_page'),
 
+    path('students/', get_students, name = 'get_students'),
+    path('get_markssss/<student_id>', get_marks, name = 'get_mark'),
+
+
+
 ]
 
 
