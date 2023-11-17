@@ -1,22 +1,26 @@
 {% extends "base.html" %}
 {% block start %}
-    <h1>
-        This is Home Page
-    </h1>
-    <a href="/about/">
-    About
-    </a>
-    |
-    <a href="/contact/">
-    Contact
-    </a>
+
+<div class="container">
+  <h1>This is Home Page</h1>
+  <!-- <a href="/about/">
+  About
+  </a>
+  |
+  <a href="/contact/">  
+  Contact
+  </a><br> -->
+
+  <a href="/send_email/" class="btn btn-primary">Send Email</a>
+
+</div>
     <p>
         This is not a mobile application. We are just practicing web application building here.
     </p>
     <p>
         {{people}}
     </p>
-    <table style="width:100%">
+    <table class="container mt-5" style="width:100%">
         <tr>
           <th>S.No.</th>
           <th>Name</th>

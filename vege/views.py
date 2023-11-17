@@ -6,6 +6,24 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db.models import Q, Sum
+from .utils import send_email_to_client, send_email_with_attachment
+from django.conf import settings
+
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
+
+#To send mail
+def send_email(request):
+
+    subject = "This email is from django server"
+    message = "This mail is for testing the mailing with attachments"
+    recipient_list = ["sukshamarya00007@gmail.com"]
+    file_path = f'{settings.BASE_DIR}/public/static/recipe/assign.png'
+
+    # send_email_to_client()
+    send_email_with_attachment(subject, message, recipient_list, file_path)
+    return redirect('/')
 
 #To get the list of all recipes
 @login_required(login_url = '/login/')
@@ -46,8 +64,8 @@ def delete_recipe(request, id):
 
 #To update a particular recipe
 @login_required(login_url = '/login/')
-def update_recipe(request, id):
-    queryset = Recipe.objects.get(id=id)
+def update_recipe(request, slug):
+    queryset = Recipe.objects.get(slug=slug)
 
     if request.method == 'POST':
 

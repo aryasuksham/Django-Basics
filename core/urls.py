@@ -32,7 +32,7 @@ urlpatterns = [
 
     path('recipes/', recipes, name = 'recipes'),
     path('delete_recipe/<id>/', delete_recipe, name = 'delete_recipe'),
-    path('update_recipe/<id>/', update_recipe, name = 'update_recipe'),
+    path('update_recipe/<slug>/', update_recipe, name = 'update_recipe'),
 
     path('login/', login_page, name = 'login_page'),
     path('logout/', logout_page, name = 'logout_page'), 
@@ -40,6 +40,8 @@ urlpatterns = [
 
     path('students/', get_students, name = 'get_students'),
     path('get_markssss/<student_id>', get_marks, name = 'get_mark'),
+
+    path('send_email/', send_email, name = 'send_email')
 
 
 
