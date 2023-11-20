@@ -34,12 +34,16 @@ AUTH_USER_MODEL = 'accounts.CustomUSer'
 # Application definition
 
 INSTALLED_APPS = [
+    # 'core',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
+    'core',
+    'rest_framework',
 ]
 
 EXTERNAL_APPS = [
@@ -88,6 +92,24 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'db_1': {
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': str(BASE_DIR / 'DB_MYSQL.mysql'),
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',  
+        'PORT': '',
+    },
+     'db_2': {
+        'ENGINE': 'djongo', 
+        'NAME': 'django',
+        'CLIENT': {
+            'host': 'mongodb+srv://sukshamaryaitwaves:8PriA6TWKhcHxdKQ@cluster0.ktycieh.mongodb.net/',
+            'port': 27017,   #default port of MongoDB
+            'username': 'sukshamaryaitwaves',
+            'password': '8PriA6TWKhcHxdKQ'
+        }
     }
 }
 

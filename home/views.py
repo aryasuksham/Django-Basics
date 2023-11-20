@@ -1,11 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from vege.seed import *
+import random
+from .models import *
+from django.shortcuts import render
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from .serializer import *
 
 # Create your views here.
 def home(request):
     # seed_db(100)
     # return HttpResponse("This is a home page.")
+
+    # Car.objects.create(car_name = f"Nexon-{random.randint(0,100)}") #signals 
     people = [
         {"name" : "arya", "age" : 23},
         {"name" :"suksham", "age" : 24},
@@ -34,3 +42,25 @@ def about(request):
 def contact(request):
     context = {'page' : 'Contact'}
     return render(request, 'home/contact.html', context)
+
+
+def info(request):
+    return HttpResponse("This is API response.")
+
+
+#Building simple APIs in Django:
+@api_view(['GET'])
+def getData(request):
+    app = Product.objects.all()
+    serializer = ProductSerializer(app, many=True)
+    return Response(serializer.data)
+
+@api_view(['POST'])
+def postData(request):
+    serializer = ProductSerializer(data=request.data)
+    print(request.data)
+    print(serializer)
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
+
